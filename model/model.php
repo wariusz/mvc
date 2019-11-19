@@ -4,12 +4,13 @@
     {
         protected $pdo;
         // konstruktor - połaczenie z bazą danych
-        public function __construct()
+        public function __construct($config)
         {
 
             try {
-                require("../config/sql.php");
-                $this->pdo = new PDO("mysql:host=$host; dbname=$dbName", $username, $password);
+                //require("../config/sql.php");
+                //$this->pdo = new PDO("mysql:host=$host; dbname=$dbName", $username, $password);
+                $this->pdo = new PDO($config['dsn'], $config['username'], $config['password']);
 
                 echo("Połączono z bazą <br>");
             } catch (PDOException $e) {
