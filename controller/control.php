@@ -37,7 +37,11 @@ class Control{
 
     public function delete(){
         $chooseStudent = $this->obiekt->oneStudent($_GET["uczniowie"]);
-        $this->obiekt->deleteStudent();
+        $this->obiekt->deleteStudent($chooseStudent["nazwisko"], $chooseStudent["Id"]);
+    }
+
+    function edit(){
+        $this->obiekt->editStudent($_GET["imie"],$_GET["nazwisko"],$_GET["klasa"], $_GET["rocznik"]);
     }
 }
 	
