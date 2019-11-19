@@ -1,6 +1,6 @@
 ﻿<?php
-require("../model/model.php");
-
+//require("../model/model.php");
+/*
 $obiekt = new Model();
 if($_GET["operation"]=="add"){
 
@@ -23,8 +23,22 @@ else{
     echo "Błędne dane lub niekompletne";
 }
 echo "<br><a href='../view/view.php'>Powrtót</a>";
-
+*/
 class Control{
+
+    public function __construct($config)
+    {
+        $this->obiekt = new Model($config);
+    }
+
+    public function add(){
+        $this->obiekt->addStudent(($_GET["imie"], $_GET["nazwisko"], $_GET["klasa"] ,$_GET["rocznik"]);
+    }
+
+    public function delete(){
+        $chooseStudent = $this->obiekt->oneStudent($_GET["uczniowie"]);
+        $this->obiekt->deleteStudent();
+    }
 }
 	
 ?>
