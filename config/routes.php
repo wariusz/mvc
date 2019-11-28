@@ -41,20 +41,15 @@ $app->get('/logger-test', function (Request $request, Response $response) {
     return $response;
 });
 
-//require("../model/model.php");
-//require("../controller/control.php");
 
 $app->get('/baza/{operation}', function(Request $request, Response $response) {
+    $config = require("config.php");
+    require("../model/model.php");
+    require("../controller/control.php");
+
     $operation = $request->getAttribute('operation');
 
-   $control = new Control();
-   $control->$operation;
-   /* require_once('../config/config.php');
-    $query = "select * from uczen order by id";
-    $result = $connection->query($query);
-    var_dump($result);
-    while ($row = $result->fetch_assoc()){
-        $data[] = $row;
-    }
-    echo json_encode($data);*/
+    $control = new Control($config);
+    $control->$operation();
+
 });
